@@ -4,12 +4,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|text|null: false, foreign_key: true|
+|name|text|null: false, foreign_key: true|
 |e_mail|string|null: false, foreign_key: true|
 
 ### Association
-- has_many :groups
-- has_many :massages
+- has_many :groups, through: :members
+
+- has_many :messages
 - has_many :members
 
 
@@ -18,14 +19,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|text|null: false, foreign_key: true|
+|name|text|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- has_many :users, through: :members
+
 - belongs_to :member
 
-- has_many :massages
+- has_many :messages
 
 
 
