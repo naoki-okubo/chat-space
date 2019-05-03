@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|index: true, null: false|
 
 ### Association
 - has_many :groups, through: :members
@@ -33,9 +33,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
-|group_id|reference|foreign_key: true|
+|group_id|reference|null: false,foreign_key: true|
 |user_id|reference|null: false, foreign_key: true|
 
 ### Association
