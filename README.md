@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, foreign_key: true|
+|name|text|null: false|
 |e_mail|string|null: false, foreign_key: true|
 
 ### Association
@@ -19,8 +19,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|name|text|null: false|
 
 ### Association
 - has_many :users, through: :members
@@ -37,7 +36,7 @@
 |------|----|-------|
 |body|text|null: false, foreign_key: true|
 |image|string|foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|integer|foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
