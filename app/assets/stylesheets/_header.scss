@@ -1,11 +1,11 @@
-.header{
-            background-color: #38AEF0;
-            height: 24px;
-            width: 100%;
+.header {
+      background-color: #38AEF0;
+      height: 24px;
+      width: 100%;
 }
-            .header__message{
-                        text-align: center;
+      &__message {
+            text-align: center;
+      }
+            &__message-text {
+                  color: white;
             }
-                        .header__message-text{
-                                    color: white;
-                        }
