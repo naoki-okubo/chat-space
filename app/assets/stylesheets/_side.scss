@@ -1,0 +1,30 @@
+.side {
+  @include side-size;
+  p {
+    @include side-text;
+  }
+  &__top {
+    @include side-top;
+    line-height: 100px;
+    display: flex;
+    justify-content: space-between;
+  }
+    &__top_user-name {
+      font-size: 16px;
+    }
+    &__top_icon {
+      float: right;
+    }
+  &__main {
+    @include size-main;
+    padding-top: 20px;
+  }
+    &__main_group {
+      font-size: 15px;
+      padding-bottom: 5px;
+    }
+    &__main_group-message {
+      font-size: 11px;
+      padding-bottom: 40px;
+    }
+}
