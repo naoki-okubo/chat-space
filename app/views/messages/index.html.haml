@@ -1,45 +1,56 @@
-%body
-  .header
-    .header__message
-      %p.header__message-text グループを作成しました。
+.wrapper
 
-  .side
-    .side__top
-      %p.side__top_user-name test-user
-      %p.side__top_icon
-        %i.fas.fa-edit
-        %i.fas.fa-cog
-    .side__main
-      %p.side__main_group test-group
-      %p.side__main_group-message さようなら！
-      %p.side__main_group sample-group
-      %p.side__main_group-message hello!!
-      %p.side__main_group example
-      %p.side__main_group-message まだメッセージがありません
+  = render 'shared/side_bar'
 
-  .message
-    .message__top
-      .message__top_edit-btn Edit
-      .message__top_group
-        %p.message__top_group-name test-group
-        %p.message__top_group-member Member : test-user
-    .message__main
-      .message__main__post
-        %p.message__main__post-name test_user
-        %p.message__main__post-time 2019/5/5(Mon) 18:00:00
-      %p.message__main__post-comment こんにちは！
-      .message__main__post
-        %p.message__main__post-name test_user
-        %p.message__main__post-time 2019/5/5(Mon) 18:00:30
-      %p.message__main__post-comment さようなら
-    .message__form
-      .message__form_main
-        %form(action="#" method="post")
-        %p.message__form_box
-          %input#message__form_box(input type="text" placeholder="type a message" name="message" size="50" style="height:50px; padding-left:10px; border:solid 0px; width:100%;")
-        %label
-          %span.filelabel(title="ファイルを選択")
-            %i.far.fa-image
-          %input#filesend(type="file" name="datafile" multiple)
-        %p.message__form_btn
-          %input(type="button" value="Send" style="height:50px; background-color:#38aef0; color:white; padding: 0px 30px; width:100px;")
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          グループ名
+        %ul.left-header__members
+          Member：
+          %li.member
+            メンバー名
+          %li.member
+            メンバー名
+          %li.member
+            メンバー名
+      .right-header
+        .right-header__button
+          Edit
+    .messages
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-meesage
+          .lower-message__content
+            メッセージ
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-meesage
+          .lower-message__content
+            メッセージ
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-meesage
+          .lower-message__content
+            メッセージ
+    .form
+      %form
+        %input.form__message
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+            %input.hidden{type: 'file'}
+        %input.form__submit{type: 'submit', value: 'Send'}
