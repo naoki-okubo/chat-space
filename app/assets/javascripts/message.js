@@ -1,9 +1,6 @@
 $(function(){
   function buildHTML(message){
-    if ( message.image ) {
       var imageHTML = message.image ? `<img src=${message.image} >` : ''
-      return imageHTML;
-    } else {
       var html =
        `<div class="message" data-message-id=${message.id}>
           <div class="upper-message">
@@ -19,9 +16,9 @@ $(function(){
               ${message.content}
             </p>
           </div>
+          ${imageHTML}
         </div>`
-      return html;
-    };
+        return html
   }
   $('.js-form').on('submit', function(e){
     e.preventDefault();
