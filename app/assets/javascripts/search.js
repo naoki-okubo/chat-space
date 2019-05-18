@@ -53,7 +53,6 @@ $(function() {
         })
 
       $(document).on("click", ".user-search-add", function(){
-
         appendBtton($(this).data("user-id"),$(this).data("user-name"),$(this))
         $(this).parent().remove()
       })
