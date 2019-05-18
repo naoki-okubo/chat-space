@@ -100,10 +100,12 @@
       &.chat-group-user__btn--add {
         color: #38aef0;
       }
-
-      &.chat-group-user__btn--remove {
-        color: #f05050;
-      }
+    }
+    .chat-group-user__btn--remove {
+      float: right;
+      display: inline-block;
+      cursor: pointer;
+      color: #f05050;
     }
   }
 
