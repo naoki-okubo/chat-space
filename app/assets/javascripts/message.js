@@ -55,14 +55,11 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
-      console.log(messages)
       var insertHTML = '';
       $.each(messages, function(){
         insertHTML += buildMessageHTML(this)
       })
       var html = insertHTML;
-      console.log(html)
       $('.messages').append(html);
       $('html, messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
