@@ -1,25 +1,26 @@
 $(function(){
-  function buildHTML(message){
-      var imageHTML = message.image ? `<img src=${message.image} >` : ''
-      var html =
-       `<div class="message" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-              ${message.date}
-            </div>
-          </div>
-          <div class="lower-message">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-          ${imageHTML}
-        </div>`
-        return html
-  }
+
+  var buildMessageHTML = function(message) {
+      var imageHTML = message.image.url ? `<img src="${message.image.url}" class="lower-message__image" >` : ''
+      var html = `<div class="message" data-id=${message.id}>
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                        ${message.user_name}
+                      </div>
+                      <div class="upper-message__date">
+                        ${message.created_at}
+                      </div>
+                    </div>
+                    <div class="lower-message">
+                      <p class="lower-message__content">
+                        ${message.content}
+                      </p>
+                      ${imageHTML}
+                    </div>
+                  </div>`
+    return html;
+  };
+
   $('.js-form').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -33,14 +34,41 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data);
+      var html = buildMessageHTML(data);
       $('.messages').append(html);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('html, messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       $('.form__submit').attr('disabled', false);
       $('form')[0].reset();
     })
     .fail(function(){
       alert('無理');
+    });
+  });
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message:last').data('id');
+    console.log(last_message_id)
+    $.ajax({
+      url: './api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
     })
-  })
-})
+    .done(function(messages) {
+      console.log('success');
+      console.log(messages)
+      var insertHTML = '';
+      $.each(messages, function(){
+        insertHTML += buildMessageHTML(this)
+      })
+      var html = insertHTML;
+      console.log(html)
+      $('.messages').append(html);
+      $('html, messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+  setInterval(reloadMessages, 5000);
+});
