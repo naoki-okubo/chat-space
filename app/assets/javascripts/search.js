@@ -52,13 +52,13 @@ $(function() {
           alert('検索に失敗しました');
         })
 
-      $(document).on("click", ".user-search-add", function(){
-        appendBtton($(this).data("user-id"),$(this).data("user-name"),$(this))
-        $(this).parent().remove()
-      })
-
-      $(document).on("click", ".chat-group-user__btn--remove", function(){
-        $(this).parent().remove()
-      })
     });
+        $(document).on("click", ".user-search-add", function(){
+          appendBtton($(this).data("user-id"),$(this).data("user-name"),$(this))
+          $(this).parent().remove()
+        })
+  
+        $(document).on("click", ".chat-group-user__btn--remove", function(){
+          $(this).parent().remove()
+        })
 });
