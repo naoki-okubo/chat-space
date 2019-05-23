@@ -36,7 +36,7 @@ $(function(){
     .done(function(data){
       var html = buildMessageHTML(data);
       $('.messages').append(html);
-      $('html, messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       $('.form__submit').attr('disabled', false);
       $('form')[0].reset();
     })
@@ -61,11 +61,11 @@ $(function(){
       })
       var html = insertHTML;
       $('.messages').append(html);
-      $('html, messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       console.log('error');
     });
   };
-  setInterval(reloadMessages, 5000);
+  setInterval(reloadMessages, 1000);
 });
