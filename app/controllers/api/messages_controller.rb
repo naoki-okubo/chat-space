@@ -5,7 +5,6 @@ class Api::MessagesController < ApplicationController
     respond_to do |format|
       format.json{@messages = @group.Message.where('id > ?',params[:id]) }
     end
-    binding.pry
   end
 
   def group
