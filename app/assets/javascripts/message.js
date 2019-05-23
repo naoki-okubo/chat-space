@@ -41,7 +41,7 @@ $(function(){
       $('form')[0].reset();
     })
     .fail(function(){
-      alert('無理');
+      alert('ごめん、マジ無理やわ...ほんまごめん。。');
     });
   });
 
@@ -62,11 +62,10 @@ $(function(){
       var html = insertHTML;
       $('.messages').append(html);
       $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-      setInterval(reloadMessages, 1000);
     })
     .fail(function() {
       console.log('error');
     });
   };
-  // setInterval(reloadMessages, 1000);
+  setInterval(reloadMessages, 1000);
 });
