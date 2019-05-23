@@ -1,13 +1,16 @@
 class Api::MessagesController < ApplicationController
-  before_action :group
+  before_action :set_group
 
   def index
     respond_to do |format|
-      format.json{@messages = @group.Message.where('id > ?',params[:id]) }
+      format.json{@messages = @group.messages.where('id > ?',params[:id]) }
     end
   end
 
-  def group
-    @group = params[:group_id]
+  private
+  
+  def set_group
+    @group = Group.find(params[:group_id])
   end
+
 end
