@@ -41,13 +41,12 @@ $(function(){
       $('form')[0].reset();
     })
     .fail(function(){
-      alert('ごめん、マジ無理やわ...ほんまごめん。。');
+      alert('マジ無理');
     });
   });
 
   var reloadMessages = function() {
     var last_message_id = $('.message:last').data('id');
-    console.log(last_message_id)
     $.ajax({
       url: './api/messages',
       type: 'get',
