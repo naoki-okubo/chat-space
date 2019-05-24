@@ -21,6 +21,7 @@ $(function(){
     return html;
   };
 
+
   $('.js-form').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -53,15 +54,16 @@ $(function(){
       dataType: 'json',
       data: {id: last_message_id}
     })
+
     .done(function(messages) {
-      var insertHTML = '';
-      $.each(messages, function(){
-        insertHTML += buildMessageHTML(this)
-      })
-      var html = insertHTML;
-      $('.messages').append(html);
-      clearInterval(auto_reload);
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        messages.forEach(function(message){
+          insertHTML += buildMessageHTML(message)
+          $('.messages').append(insertHTML);
+        })
         $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      }; 
     })
     .fail(function() {
       console.log('error');
@@ -69,3 +71,18 @@ $(function(){
   };
   auto_reload = setInterval(reloadMessages, 1000);
 });
+
+    // .done(function(messages) {
+    //   var insertHTML = '';
+    //   $.each(messages, function(){
+    //     insertHTML += buildMessageHTML(this)
+    //   })
+    //   if (insertHTML !== null){
+    //     $('.messages').append(html);
+    //     $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+    //     console.log(insertHTML)
+    //   }
+    //   var html = insertHTML;
+    //   $('.messages').append(html);
+    //   var html = insertHTML;
+    // })
