@@ -15,7 +15,7 @@
       .right-header
         .right-header__button
           %a
-            = link_to 'Edit' , edit_group_path(@group)
+            = link_to 'Edit' , edit_group_path(@group), data: {"turbolinks" => false}
     .messages
       = render @messages
     .form
