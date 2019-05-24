@@ -60,11 +60,12 @@ $(function(){
       })
       var html = insertHTML;
       $('.messages').append(html);
-      $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      clearInterval(auto_reload);
+        $('html,.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function() {
       console.log('error');
     });
   };
-  setInterval(reloadMessages, 5000);
+  auto_reload = setInterval(reloadMessages, 1000);
 });
